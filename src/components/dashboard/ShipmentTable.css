@@ -1,0 +1,54 @@
+/* src/components/Dashboard/ShipmentTable.css */
+.shipment-table-container {
+    padding: 1rem;
+  }
+  
+  .shipment-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .shipment-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .shipment-table th,
+  .shipment-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .shipment-table th {
+    font-weight: 600;
+    background-color: var(--table-header-bg);
+    cursor: pointer;
+  }
+  
+  .shipment-table th:hover {
+    background-color: var(--table-header-hover-bg);
+  }
+  
+  .shipment-table tbody tr:hover {
+    background-color: var(--table-row-hover-bg);
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: white;
+    text-transform: capitalize;
+  }
+  
+  @media (max-width: 768px) {
+    .shipment-table {
+      font-size: 0.875rem;
+    }
+    
+    .shipment-table th,
+    .shipment-table td {
+      padding: 0.5rem;
+    }
+  }

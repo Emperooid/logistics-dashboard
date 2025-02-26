@@ -1,0 +1,232 @@
+/* Sidebar container */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    width: 240px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+  }
+  
+  /* Collapsed sidebar */
+  .sidebar.collapsed {
+    width: 60px;
+  }
+  
+  /* Collapse button */
+  .collapse-button {
+    background: #16213e;
+    border: none;
+    color: #ffffff;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: right;
+    font-size: 18px;
+    transition: background-color 0.2s;
+  }
+  
+  .collapse-button:hover {
+    background-color: #0f3460;
+  }
+  
+  /* Navigation container */
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    flex-grow: 1;
+  }
+  
+  /* Navigation items */
+  .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #e2e2e2;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    border-left: 3px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .nav-item:hover {
+    background-color: #0f3460;
+    color: #ffffff;
+  }
+  
+  .nav-item.active {
+    background-color: #0f3460;
+    color: #ffffff;
+    border-left: 3px solid #e94560;
+  }
+  
+  /* Icon container */
+  .nav-icon {
+    font-size: 20px;
+    min-width: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Text label */
+  .nav-item span {
+    margin-left: 12px;
+    font-weight: 500;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Hamburger menu - Repositioned */
+  .hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 60px; /* Moved down from 15px to 30px */
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: #1a1a2e;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 10px 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .hamburger-menu span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+  }
+  
+  .hamburger-menu span:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Hamburger animation when active */
+  .hamburger-menu.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-menu.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  /* Overlay when sidebar is expanded on mobile */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Large screens (default) */
+  @media (min-width: 1200px) {
+    .sidebar {
+      width: 240px;
+    }
+    
+    .sidebar.collapsed {
+      width: 60px;
+    }
+  }
+  
+  /* Medium screens (tablets, smaller desktops) */
+  @media (min-width: 769px) and (max-width: 1199px) {
+    .sidebar {
+      width: 200px;
+    }
+    
+    .sidebar.collapsed {
+      width: 60px;
+    }
+    
+    .nav-item {
+      padding: 10px 15px;
+    }
+    
+    .nav-icon {
+      font-size: 18px;
+    }
+  }
+  
+  /* Small screens (mobile) */
+  @media (max-width: 768px) {
+    .hamburger-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .sidebar {
+      top: 0;
+      width: 0;
+      visibility: hidden;
+      overflow: hidden;
+    }
+    
+    .sidebar.collapsed {
+      width: 0;
+      visibility: hidden;
+    }
+    
+    /* When sidebar is expanded on mobile */
+    .sidebar:not(.collapsed) {
+      width: 250px;
+      visibility: visible;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-item {
+      padding: 12px 20px;
+    }
+  }
+  
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .sidebar:not(.collapsed) {
+      width: 100%;
+      max-width: 280px;
+    }
+    
+    .sidebar:not(.collapsed) .nav-item span {
+      font-size: 16px;
+    }
+    
+    .hamburger-menu {
+      top: 60px; /* Updated for consistency with the main rule */
+      right: 10px;
+    }
+  }
+  
+  /* Touch device optimization */
+  @media (hover: none) {
+    .nav-item:active {
+      background-color: #0f3460;
+    }
+    
+    .hamburger-menu {
+      padding: 12px 9px; /* Larger touch target */
+    }
+  }
